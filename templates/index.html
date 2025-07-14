@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold text-primary mb-3">{{ contact_info.name }}</h1>
+                <p class="lead text-secondary mb-4">Software Engineer & Product Manager</p>
+                <p class="fs-5 mb-4">Passionate about building innovative solutions and leading technical teams to create impactful software experiences.</p>
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    <a href="#contact" class="btn btn-primary btn-lg">Get In Touch</a>
+                    <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <a href="https://{{ contact_info.linkedin }}" target="_blank" class="btn btn-outline-primary btn-lg">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section id="about" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <h2 class="section-title mb-5 text-primary">About Me</h2>
+                <p class="lead mb-5 text-secondary">
+                    I'm a Computer Information Systems student at Wentworth Institute of Technology, 
+                    expected to graduate in December 2025. I'm passionate about technology and enjoy 
+                    creating innovative solutions through code and collaborative teamwork.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 mb-5">
+                <h3 class="text-primary mb-4">Crafting Digital Experiences</h3>
+                <p class="mb-4">
+                    Currently pursuing my Bachelor's degree with a minor in Computer Science, 
+                    I've gained hands-on experience through co-ops and work-study positions. 
+                    My technical expertise spans multiple programming languages, databases, 
+                    and development tools.
+                </p>
+                <p class="mb-4">
+                    I thrive in collaborative environments and enjoy mentoring fellow students. 
+                    My experience includes technical support, system analysis, and full-stack 
+                    development projects using modern technologies.
+                </p>
+                
+                <div class="about-stats row text-center mt-5">
+                    <div class="col-4">
+                        <h3 class="text-primary fw-bold">3+</h3>
+                        <p class="text-muted small">Major Projects</p>
+                    </div>
+                    <div class="col-4">
+                        <h3 class="text-pink fw-bold">2+</h3>
+                        <p class="text-muted small">Years Experience</p>
+                    </div>
+                    <div class="col-4">
+                        <h3 class="text-green fw-bold">Dec 2025</h3>
+                        <p class="text-muted small">Graduation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="about-feature text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-code fa-2x text-primary"></i>
+                            </div>
+                            <h5 class="text-primary">Clean Code</h5>
+                            <p class="small text-secondary">
+                                Writing maintainable, scalable, and efficient code following best practices.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="about-feature text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-palette fa-2x text-pink"></i>
+                            </div>
+                            <h5 class="text-pink">Creative Design</h5>
+                            <p class="small text-secondary">
+                                Bringing ideas to life with beautiful, user-centered design and smooth animations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="about-feature text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-tachometer-alt fa-2x text-green"></i>
+                            </div>
+                            <h5 class="text-green">Performance</h5>
+                            <p class="small text-secondary">
+                                Optimizing for speed and creating lightning-fast, responsive web experiences.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="about-feature text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-heart fa-2x text-pink"></i>
+                            </div>
+                            <h5 class="text-pink">Passion</h5>
+                            <p class="small text-secondary">
+                                Genuinely passionate about technology and constantly learning new skills.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <h2 class="text-center mb-5 section-title">Featured Projects</h2>
+                <div class="row">
+                    {% for project in projects %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card project-card h-100">
+                            <div class="project-image">
+                                {% if project.title == 'Inventory Management System' %}
+                                    <div class="project-placeholder bg-dark text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-laptop-code fa-3x"></i>
+                                    </div>
+                                {% elif project.title == 'Urban Renewal VR Experience' %}
+                                    <div class="project-placeholder bg-primary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-vr-cardboard fa-3x"></i>
+                                    </div>
+                                {% else %}
+                                    <div class="project-placeholder bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-chart-bar fa-3x"></i>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-2">
+                                    <h5 class="card-title text-dark mb-0">{{ project.title }}</h5>
+                                </div>
+                                <p class="card-text text-muted small mb-3">{{ project.description[:120] }}{% if project.description|length > 120 %}...{% endif %}</p>
+                                
+                                <div class="technologies mb-3">
+                                    {% for tech in project.technologies %}
+                                    <span class="badge tech-badge me-1 mb-1">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                
+                                <div class="project-links">
+                                    <div class="d-flex gap-2">
+                                        {% if project.github_url %}
+                                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-dark btn-sm">
+                                            <i class="fab fa-github me-1"></i> Code
+                                        </a>
+                                        {% endif %}
+                                        {% if project.demo_url and project.demo_url != '#' %}
+                                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-external-link-alt me-1"></i> Demo
+                                        </a>
+                                        {% elif project.title == 'Urban Renewal VR Experience' %}
+                                        <button class="btn btn-secondary btn-sm" disabled>
+                                            <i class="fas fa-vr-cardboard me-1"></i> VR Only
+                                        </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary btn-lg">View All Projects <i class="fas fa-arrow-right ms-2"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <h2 class="text-center mb-5 section-title">Work Experience</h2>
+                <div class="row">
+                    {% for experience in work_experiences %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="card experience-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title text-dark mb-1">{{ experience.position.split(' – ')[0] if ' – ' in experience.position else experience.position }}</h5>
+                                        <h6 class="text-primary mb-0">{{ experience.company }}</h6>
+                                    </div>
+                                    <span class="badge year-badge">{{ experience.period.split(' ')[-1] }}</span>
+                                </div>
+                                <p class="text-muted mb-3">{{ experience.highlights[0][:150] }}{% if experience.highlights[0]|length > 150 %}...{% endif %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2 class="text-center mb-5 section-title">Technical Skills</h2>
+                <div class="row">
+                    {% for category, skills in technical_skills.items() %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card skills-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary mb-3">
+                                    {% if category == 'Languages' %}
+                                    <i class="fas fa-code me-2"></i>
+                                    {% elif category == 'Databases & Frameworks' %}
+                                    <i class="fas fa-database me-2"></i>
+                                    {% else %}
+                                    <i class="fas fa-tools me-2"></i>
+                                    {% endif %}
+                                    {{ category }}
+                                </h5>
+                                <div class="skills-list">
+                                    {% for skill in skills %}
+                                    <span class="badge skill-badge me-2 mb-2">{{ skill }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="text-center mb-5 section-title">Education</h2>
+                <div class="card education-card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="card-title text-primary mb-2">{{ education.institution }}</h4>
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-map-marker-alt me-2"></i>{{ education.location }}
+                                </p>
+                                <p class="mb-2">
+                                    <strong class="text-green">{{ education.degree }}</strong>
+                                </p>
+                                <p class="mb-3">
+                                    <strong>Minor:</strong> {{ education.minor }}
+                                </p>
+                                <p class="mb-3">
+                                    <strong>{{ education.graduation }}</strong>
+                                </p>
+                                <div>
+                                    <strong class="text-secondary">Relevant Coursework:</strong>
+                                    <div class="mt-2">
+                                        {% for course in education.coursework %}
+                                        <span class="badge bg-light text-dark me-2 mb-1">{{ course }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="education-icon">
+                                    <i class="fas fa-graduation-cap fa-4x text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="text-center mb-5 section-title">Get In Touch</h2>
+                <div class="text-center">
+                    <p class="lead mb-4">I'm always interested in new opportunities and collaborations.</p>
+                    <div class="mb-4">
+                        <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-outline-primary btn-lg me-3">
+                            <i class="fas fa-file-pdf me-2"></i> Download Resume
+                        </a>
+                        <a href="https://{{ contact_info.linkedin }}" target="_blank" class="btn btn-primary btn-lg">
+                            <i class="fab fa-linkedin me-2"></i> Connect on LinkedIn
+                        </a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="contact-info">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="contact-item">
+                                            <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
+                                            <h5>Email</h5>
+                                            <p><a href="mailto:{{ contact_info.email }}" class="text-decoration-none">{{ contact_info.email }}</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="contact-item">
+                                            <i class="fas fa-phone fa-2x text-green mb-2"></i>
+                                            <h5>Phone</h5>
+                                            <p><a href="tel:{{ contact_info.phone }}" class="text-decoration-none">{{ contact_info.phone }}</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="contact-item">
+                                            <i class="fas fa-map-marker-alt fa-2x text-pink mb-2"></i>
+                                            <h5>Location</h5>
+                                            <p>{{ contact_info.location }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="contact-item">
+                                            <i class="fab fa-linkedin fa-2x text-primary mb-2"></i>
+                                            <h5>LinkedIn</h5>
+                                            <p><a href="https://{{ contact_info.linkedin }}" target="_blank" class="text-decoration-none">{{ contact_info.linkedin }}</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
