@@ -52,8 +52,8 @@ def index():
         }
     ]
     
-    # Projects data
-    projects = [
+    # Featured projects (shown by default)
+    featured_projects = [
         {
             'title': 'Inventory Management System',
             'technologies': ['JavaScript', 'HTML', 'CSS', 'PHP', 'MySQL', 'Figma'],
@@ -64,9 +64,10 @@ def index():
                 'Design full-stack tracking solution with Figma wireframes and user flow diagrams, eliminating 40+ manual hours monthly and achieving 99% stock accuracy via automated reconciliation and supplier integration.'
             ],
             'image': 'laptop-code.jpg',
-            'github_url': 'https://github.com/vyhoang/inventory-management-system',
+            'github_url': 'https://github.com/hoangv1atwit/inventory-tracking-system',
             'demo_url': 'https://inventory-demo.vyhoang.dev',
-            'status': 'In Development'
+            'status': 'In Development',
+            'featured': True
         },
         {
             'title': 'Urban Renewal VR Experience',
@@ -79,7 +80,8 @@ def index():
             'image': 'vr-code.jpg',
             'github_url': 'https://github.com/vyhoang/urban-renewal-vr',
             'demo_url': '#',
-            'status': 'Completed'
+            'status': 'Completed',
+            'featured': True
         },
         {
             'title': 'Learning Management System Initiative',
@@ -93,15 +95,71 @@ def index():
             'image': 'data-analysis.jpg',
             'github_url': 'https://github.com/vyhoang/lms-initiative',
             'demo_url': 'https://lms-analysis.vyhoang.dev',
-            'status': 'Completed'
+            'status': 'Completed',
+            'featured': True
         }
     ]
+    
+    # Additional projects (shown when "View All Projects" is clicked)
+    additional_projects = [
+        {
+            'title': 'English Marble Solitaire',
+            'technologies': ['Java', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap', 'MVC'],
+            'period': 'Sep 2023 – Dec 2023',
+            'description': 'Architected and translated Java-based English Marble Solitaire game from Model-View-Controller framework to interactive web application, demonstrating proficiency in both object-oriented Java programming and modern JavaScript.',
+            'highlights': [
+                'Implemented Model-View-Controller design pattern by porting Java classes into JavaScript modules',
+                'Developed responsive web interface with advanced game mechanics including real-time move validation algorithms, hint system, and state management',
+                'Successfully bridged backend Java logic with frontend technologies to create a fully functional browser-based game application'
+            ],
+            'image': 'game.jpg',
+            'github_url': 'https://github.com/hoangv1atwit/EnglishMarbleSolitaire',
+            'demo_url': 'https://marble-solitaire.vyhoang.dev',
+            'status': 'Completed',
+            'featured': False
+        },
+        {
+            'title': 'Audience Engagement System',
+            'technologies': ['JavaScript', 'Chart.js', 'HTML', 'CSS', 'Analytics', 'Agile'],
+            'period': 'Jan 2024 – May 2024',
+            'description': 'Integrated software that records daily audience engagement statistics from client\'s website and displays graphs based on readings like page views, session duration and geographic source over time.',
+            'highlights': [
+                'Implemented Agile development methodologies, managing 4 two-week sprints with a cross-functional team of 4 students, achieving 100% sprint completion rate',
+                'Launched the finished system on time and obtained a client satisfaction score of 4.5/5 based on its ability to provide requested insights',
+                'Built comprehensive analytics dashboard with real-time data visualization capabilities'
+            ],
+            'image': 'analytics.jpg',
+            'github_url': 'https://github.com/vyhoang/audience-engagement-system',
+            'demo_url': 'https://engagement-analytics.vyhoang.dev',
+            'status': 'Completed',
+            'featured': False
+        },
+        {
+            'title': 'Portfolio Website',
+            'technologies': ['Flask', 'Python', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+            'period': 'Dec 2024 – Present',
+            'description': 'Personal portfolio website built with Flask to showcase projects, experience, and technical skills with modern web technologies.',
+            'highlights': [
+                'Responsive design with modern UI/UX principles',
+                'Dynamic content management with Flask templating',
+                'Optimized performance and accessibility'
+            ],
+            'image': 'portfolio.jpg',
+            'github_url': 'https://github.com/hoangv1atwit/portfolio-website',
+            'demo_url': 'https://evelynhoangvy.space',
+            'status': 'Completed',
+            'featured': False
+        }
+    ]
+    
+    # Combine all projects for data passing
+    all_projects = featured_projects + additional_projects
     
     # Technical skills
     technical_skills = {
         'Languages': ['Java', 'Python', 'SQL', 'C', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Swift', 'Bash', 'PowerShell'],
         'Databases & Frameworks': ['AWS', 'JUnit', 'UIKit', 'MySQL', 'MSSQL', 'Oracle', 'Linux'],
-        'Tools': ['Git', 'Jira', 'Figma', 'SketchUp', 'Adobe', 'Trello', 'Power BI', 'Salesforce', 'Unity']
+        'Tools': ['Git', 'Jira', 'Figma', 'SketchUp', 'Adobe', 'Trello', 'Power BI', 'Salesforce', 'Unity', 'Bloomberg Terminal']
     }
     
     # Education
@@ -125,7 +183,8 @@ def index():
     
     return render_template('index.html', 
                          work_experiences=work_experiences,
-                         projects=projects,
+                         featured_projects=featured_projects,
+                         all_projects=all_projects,
                          technical_skills=technical_skills,
                          education=education,
                          contact_info=contact_info)
