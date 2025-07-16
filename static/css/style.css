@@ -355,6 +355,30 @@ body {
     transform: translateY(-2px);
 }
 
+/* Project Toggle Animation */
+#additional-projects {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+#additional-projects.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#view-all-projects-btn {
+    transition: all 0.3s ease;
+}
+
+#btn-icon {
+    transition: transform 0.3s ease;
+}
+
+#view-all-projects-btn.expanded #btn-icon {
+    transform: rotate(180deg);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-section {
@@ -498,13 +522,13 @@ footer {
 /* Loading Animation */
 @keyframes pulse {
     0% {
-        transform: scale(1);
+        opacity: 1;
     }
     50% {
-        transform: scale(1.05);
+        opacity: 0.5;
     }
     100% {
-        transform: scale(1);
+        opacity: 1;
     }
 }
 

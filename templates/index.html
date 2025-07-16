@@ -54,8 +54,8 @@
                 
                 <div class="about-stats row text-center mt-5">
                     <div class="col-4">
-                        <h3 class="text-primary fw-bold">3+</h3>
-                        <p class="text-muted small">Major Projects</p>
+                        <h3 class="text-primary fw-bold">6+</h3>
+                        <p class="text-muted small">Total Projects</p>
                     </div>
                     <div class="col-4">
                         <h3 class="text-pink fw-bold">2+</h3>
@@ -85,11 +85,11 @@
                     <div class="col-md-6 mb-4">
                         <div class="about-feature text-center p-4">
                             <div class="feature-icon mb-3">
-                                <i class="fas fa-palette fa-2x text-pink"></i>
+                                <i class="fas fa-users fa-2x text-pink"></i>
                             </div>
-                            <h5 class="text-pink">Creative Design</h5>
+                            <h5 class="text-pink">Natural Leadership</h5>
                             <p class="small text-secondary">
-                                Bringing ideas to life with beautiful, user-centered design and smooth animations.
+                                Leading teams through collaboration, mentoring, and inspiring others to achieve shared goals.
                             </p>
                         </div>
                     </div>
@@ -129,8 +129,8 @@
         <div class="row">
             <div class="col-lg-12 mx-auto">
                 <h2 class="text-center mb-5 section-title">Featured Projects</h2>
-                <div class="row">
-                    {% for project in projects %}
+                <div class="row" id="featured-projects">
+                    {% for project in featured_projects %}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card project-card h-100">
                             <div class="project-image">
@@ -162,7 +162,7 @@
                                 
                                 <div class="project-links">
                                     <div class="d-flex gap-2">
-                                        {% if project.github_url %}
+                                        {% if project.github_url and project.github_url != '#' %}
                                         <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-dark btn-sm">
                                             <i class="fab fa-github me-1"></i> Code
                                         </a>
@@ -183,8 +183,70 @@
                     </div>
                     {% endfor %}
                 </div>
+
+                <!-- Additional Projects (hidden by default) -->
+                <div class="row" id="additional-projects" style="display: none;">
+                    {% for project in all_projects %}
+                    {% if not project.featured %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card project-card h-100">
+                            <div class="project-image">
+                                {% if project.title == 'English Marble Solitaire' %}
+                                    <div class="project-placeholder bg-success text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-gamepad fa-3x"></i>
+                                    </div>
+                                {% elif project.title == 'Audience Engagement System' %}
+                                    <div class="project-placeholder bg-info text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-chart-line fa-3x"></i>
+                                    </div>
+                                {% elif project.title == 'Portfolio Website' %}
+                                    <div class="project-placeholder bg-warning text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-globe fa-3x"></i>
+                                    </div>
+                                {% else %}
+                                    <div class="project-placeholder bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-code fa-3x"></i>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-2">
+                                    <h5 class="card-title text-dark mb-0">{{ project.title }}</h5>
+                                </div>
+                                <p class="card-text text-muted small mb-3">{{ project.description[:120] }}{% if project.description|length > 120 %}...{% endif %}</p>
+                                
+                                <div class="technologies mb-3">
+                                    {% for tech in project.technologies %}
+                                    <span class="badge tech-badge me-1 mb-1">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                
+                                <div class="project-links">
+                                    <div class="d-flex gap-2">
+                                        {% if project.github_url and project.github_url != '#' %}
+                                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-dark btn-sm">
+                                            <i class="fab fa-github me-1"></i> Code
+                                        </a>
+                                        {% endif %}
+                                        {% if project.demo_url and project.demo_url != '#' %}
+                                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-external-link-alt me-1"></i> Demo
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary btn-lg">View All Projects <i class="fas fa-arrow-right ms-2"></i></button>
+                    <button class="btn btn-primary btn-lg" id="view-all-projects-btn">
+                        <span id="btn-text">View All Projects</span> 
+                        <i class="fas fa-arrow-down ms-2" id="btn-icon"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -243,7 +305,7 @@
                                 </h5>
                                 <div class="skills-list">
                                     {% for skill in skills %}
-                                    <span class="badge skill-badge me-2 mb-2">{{ skill }}</span>
+                                    <span class="skill-badge me-2 mb-2 d-inline-block">{{ skill }}</span>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -260,37 +322,25 @@
 <section id="education" class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-10 mx-auto">
                 <h2 class="text-center mb-5 section-title">Education</h2>
-                <div class="card education-card">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <h4 class="card-title text-primary mb-2">{{ education.institution }}</h4>
-                                <p class="text-muted mb-2">
-                                    <i class="fas fa-map-marker-alt me-2"></i>{{ education.location }}
-                                </p>
-                                <p class="mb-2">
-                                    <strong class="text-green">{{ education.degree }}</strong>
-                                </p>
-                                <p class="mb-3">
-                                    <strong>Minor:</strong> {{ education.minor }}
-                                </p>
-                                <p class="mb-3">
-                                    <strong>{{ education.graduation }}</strong>
-                                </p>
-                                <div>
-                                    <strong class="text-secondary">Relevant Coursework:</strong>
-                                    <div class="mt-2">
-                                        {% for course in education.coursework %}
-                                        <span class="badge bg-light text-dark me-2 mb-1">{{ course }}</span>
-                                        {% endfor %}
-                                    </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card education-card">
+                            <div class="card-body text-center">
+                                <div class="education-icon mb-4">
+                                    <i class="fas fa-graduation-cap fa-3x text-primary"></i>
                                 </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="education-icon">
-                                    <i class="fas fa-graduation-cap fa-4x text-primary"></i>
+                                <h3 class="text-primary mb-2">{{ education.degree }}</h3>
+                                <h5 class="text-secondary mb-2">{{ education.minor }}</h5>
+                                <h4 class="text-dark mb-3">{{ education.institution }}</h4>
+                                <p class="text-muted mb-3">{{ education.location }}</p>
+                                <p class="fw-bold text-primary mb-4">{{ education.graduation }}</p>
+                                <div class="coursework">
+                                    <h6 class="text-dark mb-3">Relevant Coursework:</h6>
+                                    {% for course in education.coursework %}
+                                    <span class="badge bg-light text-dark me-2 mb-2">{{ course }}</span>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -300,57 +350,40 @@
         </div>
     </div>
 </section>
-
+                            
 <!-- Contact Section -->
 <section id="contact" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-10 mx-auto">
                 <h2 class="text-center mb-5 section-title">Get In Touch</h2>
-                <div class="text-center">
-                    <p class="lead mb-4">I'm always interested in new opportunities and collaborations.</p>
-                    <div class="mb-4">
-                        <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-outline-primary btn-lg me-3">
-                            <i class="fas fa-file-pdf me-2"></i> Download Resume
-                        </a>
-                        <a href="https://{{ contact_info.linkedin }}" target="_blank" class="btn btn-primary btn-lg">
-                            <i class="fab fa-linkedin me-2"></i> Connect on LinkedIn
-                        </a>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                            <h5>Email</h5>
+                            <a href="mailto:{{ contact_info.email }}" class="text-decoration-none">{{ contact_info.email }}</a>
+                        </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="contact-info">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="contact-item">
-                                            <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
-                                            <h5>Email</h5>
-                                            <p><a href="mailto:{{ contact_info.email }}" class="text-decoration-none">{{ contact_info.email }}</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="contact-item">
-                                            <i class="fas fa-phone fa-2x text-green mb-2"></i>
-                                            <h5>Phone</h5>
-                                            <p><a href="tel:{{ contact_info.phone }}" class="text-decoration-none">{{ contact_info.phone }}</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="contact-item">
-                                            <i class="fas fa-map-marker-alt fa-2x text-pink mb-2"></i>
-                                            <h5>Location</h5>
-                                            <p>{{ contact_info.location }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="contact-item">
-                                            <i class="fab fa-linkedin fa-2x text-primary mb-2"></i>
-                                            <h5>LinkedIn</h5>
-                                            <p><a href="https://{{ contact_info.linkedin }}" target="_blank" class="text-decoration-none">{{ contact_info.linkedin }}</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-item">
+                            <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                            <h5>Phone</h5>
+                            <a href="tel:{{ contact_info.phone }}" class="text-decoration-none">{{ contact_info.phone }}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin fa-2x text-primary mb-3"></i>
+                            <h5>LinkedIn</h5>
+                            <a href="https://{{ contact_info.linkedin }}" target="_blank" class="text-decoration-none">Connect with me</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
+                            <h5>Location</h5>
+                            <p class="mb-0">{{ contact_info.location }}</p>
                         </div>
                     </div>
                 </div>

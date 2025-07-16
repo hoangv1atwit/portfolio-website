@@ -78,6 +78,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // View All Projects Toggle Functionality
+    const viewAllBtn = document.getElementById('view-all-projects-btn');
+    const additionalProjects = document.getElementById('additional-projects');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    let isExpanded = false;
+    
+    viewAllBtn.addEventListener('click', function() {
+        if (!isExpanded) {
+            // Show additional projects
+            additionalProjects.style.display = 'flex';
+            setTimeout(() => {
+                additionalProjects.classList.add('show');
+            }, 10);
+            
+            // Update button text and icon
+            btnText.textContent = 'Show Less';
+            btnIcon.classList.remove('fa-arrow-down');
+            btnIcon.classList.add('fa-arrow-up');
+            viewAllBtn.classList.add('expanded');
+            
+            isExpanded = true;
+            
+            // Scroll to the additional projects section smoothly
+            setTimeout(() => {
+                additionalProjects.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
+            
+        } else {
+            // Hide additional projects
+            additionalProjects.classList.remove('show');
+            setTimeout(() => {
+                additionalProjects.style.display = 'none';
+            }, 500);
+            
+            // Update button text and icon
+            btnText.textContent = 'View All Projects';
+            btnIcon.classList.remove('fa-arrow-up');
+            btnIcon.classList.add('fa-arrow-down');
+            viewAllBtn.classList.remove('expanded');
+            
+            isExpanded = false;
+            
+            // Scroll back to featured projects
+            document.getElementById('featured-projects').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+    
     // Typing effect for hero section
     const heroTitle = document.querySelector('.hero-section h1');
     if (heroTitle) {
@@ -114,8 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
     contactItems.forEach((item, index) => {
         item.style.animationDelay = `${index * 0.1}s`;
     });
-    
-    // Removed parallax effect that was causing content movement during scroll
     
     // Mobile menu close on link click
     const mobileMenuLinks = document.querySelectorAll('.navbar-nav .nav-link');
@@ -162,10 +214,18 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('beforeprint', function() {
         // Expand all collapsed sections for printing
         document.body.classList.add('print-mode');
+        if (!isExpanded) {
+            additionalProjects.style.display = 'block';
+            additionalProjects.classList.add('show');
+        }
     });
     
     window.addEventListener('afterprint', function() {
         document.body.classList.remove('print-mode');
+        if (!isExpanded) {
+            additionalProjects.style.display = 'none';
+            additionalProjects.classList.remove('show');
+        }
     });
 });
 
@@ -185,20 +245,22 @@ function animateValue(element, start, end, duration) {
 
 // Initialize number animations for hero stats
 function initializeStatsAnimation() {
-    const statsElements = document.querySelectorAll('.hero-stats h3');
+    const statsElements = document.querySelectorAll('.about-stats h3');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const text = entry.target.textContent;
                 const number = parseInt(text.replace(/\D/g, ''));
-                const suffix = text.replace(/\d/g, '');
                 
-                animateValue(entry.target, 0, number, 1000);
-                
-                // Add suffix back after animation
-                setTimeout(() => {
-                    entry.target.textContent = number + suffix;
-                }, 1000);
+                if (number && number > 0) {
+                    const suffix = text.replace(/\d/g, '');
+                    animateValue(entry.target, 0, number, 1000);
+                    
+                    // Add suffix back after animation
+                    setTimeout(() => {
+                        entry.target.textContent = number + suffix;
+                    }, 1000);
+                }
                 
                 observer.unobserve(entry.target);
             }
