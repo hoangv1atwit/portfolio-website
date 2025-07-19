@@ -13,8 +13,8 @@ def index():
             'period': 'May 2025 – Present',
             'highlights': [
                 'Lead a two-person team using Agile workflow and Git for version control',
-                'Integrate dynamic dashboards with real-time data visualizations, improving 15% faster decision-making',
-                'Design full-stack tracking solution eliminating 40+ manual hours monthly with 99% stock accuracy'
+                'Integrate real-time dashboards to track inventory and forecast revenue using linear regression',
+                'Design full-stack tracking solution with Figma wireframes and user flow diagrams'
             ]
         },
         {
@@ -23,9 +23,9 @@ def index():
             'position': 'Product Manager – Learning Management System (LMS) Initiative',
             'period': 'Sep 2024 – Dec 2024',
             'highlights': [
-                'Conducted market research via surveys, interviews, and user personas',
-                'Scoped MVP requirements and evaluated three LMS platforms using vendor scorecard',
-                'Streamlined project communication through Trello workflows and Power BI reports'
+                'Drove product strategy by conducting market research (150+ surveys, 25+ stakeholder interviews)',
+                'Led vendor evaluation of 3 LMS platforms via scoring matrix (12 criteria including usability, scalability, and integrations)',
+                'Streamlined project communication via Trello and developed automated Power BI reporting from user analytics'
             ]
         },
         {
@@ -34,8 +34,8 @@ def index():
             'position': 'Technical Support Engineer Co-op',
             'period': 'Jan 2024 – May 2024',
             'highlights': [
-                'Handled inbound support inquiries ensuring accurate reproducible descriptions',
-                'Refined SQL documentation resulting in 45% decrease in average resolution time',
+                'Implemented SQL logging and standardized documentation, enhancing traceability and root-cause analysis.',
+                'Coordinated with Engineering and Product teams to prioritize and resolve 130+ issues',
                 'Collaborated with cross-functional teams to track issues and bugs'
             ]
         },
@@ -58,10 +58,10 @@ def index():
             'title': 'Inventory Management System',
             'technologies': ['JavaScript', 'HTML', 'CSS', 'PHP', 'MySQL', 'Figma'],
             'period': 'May 2025 – Present',
-            'description': 'Led a two-person team using Agile workflow and Git for version control, partnering with a local business owner to build their custom solution while discussing implementation with a second prospective client.',
+            'description': '-	Lead a 2-person cross-functional team using Agile workflows and Git version control to digitalize pen & paper inventory system, addressing manual tracking inefficiencies that generated 2 additional client prospects within first quarter.',
             'highlights': [
-                'Integrate dynamic dashboards with real-time data visualizations, improving 15% faster decision-making and reducing excess inventory costs by 20% through predictive analytics.',
-                'Design full-stack tracking solution with Figma wireframes and user flow diagrams, eliminating 40+ manual hours monthly and achieving 99% stock accuracy via automated reconciliation and supplier integration.'
+                'Integrate real-time dashboards to track inventory and forecast revenue using linear regression, reducing daily decision-making time from 3 to 2 hours and uncovering $3K in potential cost savings.',
+                'Design full-stack tracking solution with Figma wireframes and user flow diagrams, automating 5 core inventory processes and achieving 99% stock accuracy (up from 60% manual accuracy).'
             ],
             'image': 'laptop-code.jpg',
             'github_url': 'https://github.com/hoangv1atwit/inventory-tracking-system',
@@ -73,9 +73,9 @@ def index():
             'title': 'Urban Renewal VR Experience',
             'technologies': ['Unity', 'Meta Quest VR', 'C#', 'Agile'],
             'period': 'Jan 2025 – April 2025',
-            'description': 'Conducted archival research using over 10 primary sources, oral histories, and museum documents to create an authentic experience. Demonstrated technical proficiency by incorporating 5 interactive VR environments and 10+ interactive elements that bridge historical documentation with immersive digital storytelling.',
+            'description': '-	Launched VR product featuring 5 interactive environments and 15+ engagement elements, validated by 10+ beta testers to bridge history with immersive storytelling.',
             'highlights': [
-                'Collaborated with the West End Museum and a team of four students, maintaining a 90% above approval rating from historical consultants.'
+                '-	Collaborated with the West End Museum and a 4-person development team to create immersive 3D visualizations of the neighborhood, earning 90%+ approval from 8 historical consultants via iterative feedback and quality assurance processes.'
             ],
             'image': 'vr-code.jpg',
             'github_url': 'https://github.com/vyhoang/urban-renewal-vr',
@@ -87,10 +87,10 @@ def index():
             'title': 'Learning Management System Initiative',
             'technologies': ['Microsoft Excel', 'Microsoft Project', 'Trello', 'Power BI'],
             'period': 'Sep 2024 – Dec 2024',
-            'description': 'Conducted market research via surveys, interviews, and user personas to define pain points and draft prioritized user stories across student and faculty workflows.',
+            'description': 'Led vendor evaluation of 3 LMS platforms via scoring matrix (12 criteria including usability, scalability, and integrations), ensuring technical fit for stakeholder requirements.',
             'highlights': [
-                'Scoped MVP requirements and evaluated three LMS platforms using a vendor scorecard, balancing usability, integration, and scalability for key stakeholders.',
-                'Streamlined project communication and deliverable tracking through Trello workflows, translated survey responses and user analytics into comprehensive Power BI reports, and performed cost-benefit analysis in Excel to justify platform selection.'
+                'Drove product strategy by conducting market research (150+ surveys, 25+ stakeholder interviews), synthesizing insights into user stories and prioritizing backlog to align roadmap with user needs.',
+                '-	Streamlined project communication via Trello and developed automated Power BI reporting from user analytics, accelerating stakeholder decision timelines by 20%.'
             ],
             'image': 'data-analysis.jpg',
             'github_url': 'https://github.com/vyhoang/lms-initiative',
@@ -175,7 +175,7 @@ def index():
     # Contact info
     contact_info = {
         'name': 'Vy (Evelyn) Hoang',
-        'location': 'Brighton, MA',
+        'location': 'Boston, MA',
         'phone': '857-234-5331',
         'email': 'hoangv1@wit.edu',
         'linkedin': 'linkedin.com/in/vybaohg'
