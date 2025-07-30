@@ -65,7 +65,7 @@ def index():
             ],
             'image': 'laptop-code.jpg',
             'github_url': 'https://github.com/hoangv1atwit/inventory-tracking-system',
-            'demo_url': 'https://inventory-demo.vyhoang.dev',
+            'demo_url': 'https://mywentworth-my.sharepoint.com/:p:/g/personal/hoangv1_wit_edu/EeE3TAIaz69BtcMelT6mUDQBj8n3lJYAhnZ-E3BDi2GSrQ?e=cLLXYH',
             'status': 'In Development',
             'featured': True
         },
