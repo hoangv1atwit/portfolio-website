@@ -34,9 +34,9 @@ def index():
             'position': 'Technical Support Engineer Co-op',
             'period': 'Jan 2024 – May 2024',
             'highlights': [
-                'Implemented SQL logging and standardized documentation, enhancing traceability and root-cause analysis.',
-                'Coordinated with Engineering and Product teams to prioritize and resolve 130+ issues',
-                'Collaborated with cross-functional teams to track issues and bugs'
+                'Acted as a client-facing point of contact for 20+ financial institutions to support portfolio management workflows and triage issues.',
+                'Coordinated with Engineering and Operations teams to prioritize and resolve 130+ issues',
+                'Implemented SQL logging and standardized documentation, enhancing traceability and root-cause analysis.'
             ]
         },
         {
