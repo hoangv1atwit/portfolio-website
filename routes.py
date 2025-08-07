@@ -158,7 +158,7 @@ def index():
     # Technical skills
     technical_skills = {
         'Languages': ['Java', 'Python', 'SQL', 'C', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Swift', 'Bash', 'PowerShell'],
-        'Databases & Frameworks': ['AWS', 'JUnit', 'UIKit', 'MySQL', 'MSSQL', 'Oracle', 'Linux'],
+        'Databases & Frameworks': ['AWS', 'JUnit', 'UIKit', 'PostgreSQL', 'MSSQL', 'Oracle', 'Linux'],
         'Tools': ['Git', 'Jira', 'Figma', 'SketchUp', 'Adobe', 'Trello', 'Power BI', 'Salesforce', 'Unity', 'Bloomberg Terminal']
     }
     
