@@ -58,7 +58,7 @@ def index():
             'title': 'Inventory Management System',
             'technologies': ['JavaScript', 'HTML', 'CSS', 'PHP', 'PostgreSQL', 'Figma'],
             'period': 'May 2025 – Present',
-            'description': '-	Lead a 2-person cross-functional team using Agile workflows and Git version control to digitalize pen & paper inventory system, addressing manual tracking inefficiencies that generated 2 additional client prospects within first quarter.',
+            'description': 'Lead a 2-person cross-functional team using Agile workflows and Git version control to digitalize pen & paper inventory system, addressing manual tracking inefficiencies that generated 2 additional client prospects within first quarter.',
             'highlights': [
                 'Integrate real-time dashboards to track inventory and forecast revenue using linear regression, reducing daily decision-making time from 3 to 2 hours and uncovering $3K in potential cost savings.',
                 'Design full-stack tracking solution with Figma wireframes and user flow diagrams, automating 5 core inventory processes and achieving 99% stock accuracy (up from 60% manual accuracy).'
@@ -73,12 +73,12 @@ def index():
             'title': 'Urban Renewal VR Experience',
             'technologies': ['Unity', 'Meta Quest VR', 'C#', 'Agile'],
             'period': 'Jan 2025 – April 2025',
-            'description': '-	Launched VR product featuring 5 interactive environments and 15+ engagement elements, validated by 10+ beta testers to bridge history with immersive storytelling.',
+            'description': 'Launched VR product featuring 5 interactive environments and 15+ engagement elements, validated by 10+ beta testers to bridge history with immersive storytelling.',
             'highlights': [
                 '-	Collaborated with the West End Museum and a 4-person development team to create immersive 3D visualizations of the neighborhood, earning 90%+ approval from 8 historical consultants via iterative feedback and quality assurance processes.'
             ],
             'image': 'vr-code.jpg',
-            'github_url': 'https://github.com/vyhoang/urban-renewal-vr',
+            'github_url': 'https://github.com/ellakhoward/West-End-VR-Spring-2025',
             'demo_url': '#',
             'status': 'Completed',
             'featured': True
@@ -94,7 +94,7 @@ def index():
             ],
             'image': 'data-analysis.jpg',
             'github_url': 'https://github.com/vyhoang/lms-initiative',
-            'demo_url': 'https://lms-analysis.vyhoang.dev',
+            'demo_url': 'https://mywentworth-my.sharepoint.com/:p:/g/personal/hoangv1_wit_edu/ETlUN324LUtKsTQkfURXlFEBbnS7hAKL_oOD0HdPbVpPSQ?e=1JPaxd',
             'status': 'Completed',
             'featured': True
         }
