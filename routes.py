@@ -56,7 +56,7 @@ def index():
     featured_projects = [
         {
             'title': 'Inventory Management System',
-            'technologies': ['JavaScript', 'HTML', 'CSS', 'PHP', 'MySQL', 'Figma'],
+            'technologies': ['JavaScript', 'HTML', 'CSS', 'PHP', 'PostgreSQL', 'Figma'],
             'period': 'May 2025 – Present',
             'description': '-	Lead a 2-person cross-functional team using Agile workflows and Git version control to digitalize pen & paper inventory system, addressing manual tracking inefficiencies that generated 2 additional client prospects within first quarter.',
             'highlights': [
